@@ -18,16 +18,19 @@ function getArrayParams(...arr) {
 console.log(getArrayParams(-99, 99, 10));
 
 function summElementsWorker(...arr) {
- let sum = arr.reduce((acc, c) => acc + c);
+ let sum = arr.reduce((acc, c) => acc + c,0);
   return sum;
 }
 console.log(summElementsWorker(10, 10, 11, 20, 10));
 
 function differenceMaxMinWorker(...arr) {
-  let min = Math.min(...arr);
-  let max = Math.max(...arr);
-  let dif = max - min;
-  return dif;
+	if (arr.length === 0){
+		return 0;
+	}
+  	let min = Math.min(...arr);
+  	let max = Math.max(...arr);
+  	let dif = max - min;
+  	return dif;
 }
 console.log(differenceMaxMinWorker(10, 10, 11, 20, 10));
 
