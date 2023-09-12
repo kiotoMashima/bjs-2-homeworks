@@ -8,31 +8,25 @@ Student.prototype.setSubject = function (subjectName) {
   return this.subject = subjectName;
 }
 Student.prototype.addMarks = function (...marksToAdd){
-  if (Student.exclude === "плохая учёба") {
-    return 0;
-  } else {
-    return this.marks = marksToAdd;
-  }
-}
-Student.prototype.getAverage = function() {
-    if (typeof Student.marks !== 'undefined') {
-      return 0;
-    } else {
-        let result = this.marks.reduce((acc,item,idx,arr)=>{
-      return acc + item / arr.length;
-     },0);
-      return result;
+    if (this.marks) {
+      return this.marks.push(...marksToAdd);
     }
 }
+Student.prototype.getAverage = function() {
+     if (this.marks === 'undefined' || this.marks.length === 0) {
+      return 0;
+    }
+    return this.marks.reduce((acc, item) => acc + item/this.marks.length, 0);
+}
 Student.prototype.exclude = function (reason) {
-    delete Student2.marks;
-    delete Student2.subject;
+    delete this.marks;
+    delete this.subject;
     return this.excluded = reason;
 }
-let Student1 = new Student("Васелиса","женский",19);
-let Student2 = new Student("Олег","мужской",25);
+const Student1 = new Student("Васелиса","женский",19);
+const Student2 = new Student("Олег","мужской",25);
 Student1.setSubject("Algebra");
-Student1.addMarks(5,5,5,5);
+Student1.addMarks(4,5,4,4);
 console.log(Student1);
 Student2.setSubject("Geometry");
 Student2.exclude('плохая учёба');
