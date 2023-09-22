@@ -15,11 +15,11 @@ class PrintEditionItem {
     } else if (number > 100){
       this._state = 100;
     } else {
-      this.state = number;
+      this._state = number;
     }
   }
   get state(){
-    return this.state;
+    return this._state;
   }
 }
 class Magazine extends PrintEditionItem {
@@ -30,8 +30,8 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-	constructor(author, name, releaseDate, pagesCount) {
-		super(name, releaseDate, pagesCount);
+	constructor(name, releaseDate, pagesCount,author) {
+		super(name, releaseDate, pagesCount,author);
 		this.author = author;
 		this.type = "book";
 	}
